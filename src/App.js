@@ -46,7 +46,7 @@ function getCookie(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
-function Auth({setIsLogged}) {
+function Auth({setIsLogged, apiUrl}) {
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const [registerFormData, setRegisterFormData] = useState({});
@@ -81,7 +81,7 @@ function Auth({setIsLogged}) {
   }
   const handleRegister = () => {
     axios
-      .post('http://localhost:80/auth/register', registerFormData)
+      .post(`${apiUrl}/auth/register`, registerFormData)
       .then((response) => {
         document.cookie = `token = ${response.data.token}`
         setIsLogged(true)
@@ -90,7 +90,7 @@ function Auth({setIsLogged}) {
 
   const handleLogin = () => {
     axios
-      .post('http://localhost:80/auth/login', loginFormData)
+      .post(`${apiUrl}/auth/login`, loginFormData)
       .then((response) => {
         document.cookie = `token = ${response.data.token}`
         setIsLogged(true)
@@ -146,7 +146,7 @@ function Auth({setIsLogged}) {
 
 function App() {
   const token = getCookie("token")
-  const apiUrl= "http://18.196.80.227:80"
+  const apiUrl= "http://localhost:80"
 
 
   const [isLogged, setIsLogged] = useState(false)
@@ -157,7 +157,7 @@ function App() {
 
   return (
     <div>
-      {isLogged ? <><Content  token = {token} setIsLogged={setIsLogged} apiUrl={apiUrl}/></> : <Auth setIsLogged={setIsLogged} />}
+      {isLogged ? <><Content  token = {token} setIsLogged={setIsLogged} apiUrl={apiUrl}/></> : <Auth setIsLogged={setIsLogged} apiUrl={apiUrl}/>}
     </div>
 
   )

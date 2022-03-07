@@ -18,12 +18,10 @@ function Content({ token, setIsLogged, apiUrl }) {
   const [todoTitle,setTodoTitle] = useState();
   const [todoList,setTodoList] = useState([]);
 
-
-
-
+ 
   useEffect(() => {
     updateList()
-  }, [])
+  }, [todoList])
 
 
   const updateList = () => {
@@ -78,6 +76,7 @@ function Content({ token, setIsLogged, apiUrl }) {
          config
       )
         .then(updateTodoList())
+        .catch((err) => { alert("Todo Eklenemedi") })
         updateTodoList()
    
     
@@ -99,13 +98,7 @@ function Content({ token, setIsLogged, apiUrl }) {
       )
 
   }
-
-
-   
-
-
-
-
+ 
   return (
 
     <>
@@ -175,11 +168,10 @@ function Content({ token, setIsLogged, apiUrl }) {
       </Box>
       <TodoList 
       todoList={todoList}
-      setTodoList={setTodoList}
+    
       updateTodoList={updateTodoList}
       token={token}
       categoryList={categoryList}
-      handleSelectedCategory={handleSelectedCategory}
       statusList={statusList}
       updateStatusList ={updateStatusList}
       todoTitle={todoTitle}

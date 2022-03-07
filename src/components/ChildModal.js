@@ -101,7 +101,7 @@ export default function ChildModal({ item, token, apiUrl}) {
     updateStatusList(idStatus)
   };
   const handleClose = () => setOpen(false);
-  const colors = ["Yellow", "Red", "Blue", "Purple", "Black", "Brown"]
+  const colors = ["Yellow", "Red", "Blue", "Purple", "Black"]
   return (
     <>
       <Button  variant="contained" onClick={handleOpen}>Status Düzenle</Button>

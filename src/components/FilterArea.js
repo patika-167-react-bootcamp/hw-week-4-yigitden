@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 const FilterArea = ({categoryList,token,setTodoList,todoList,apiUrl}) => {
 
     const [filteredStatus,setFilteredStatus] = useState([])
- 
-    
     const [filteredStatusId,setFilteredStatusId] = useState('')
     const [filteredCategoryId,setFilteredCategoryId] = useState('')
 
@@ -51,10 +49,7 @@ const FilterArea = ({categoryList,token,setTodoList,todoList,apiUrl}) => {
              setTodoList(newArray)
                     }
 
-            const cleanFilter = () => {
-                filterTodo()
-
-            }
+          
   
     return (
         <Box sx={{ width: 900, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', mx: "auto", mt:"20px" }}>
@@ -100,7 +95,7 @@ const FilterArea = ({categoryList,token,setTodoList,todoList,apiUrl}) => {
 
             </FormControl>
             <Button onClick={() => filtered()} variant="contained" >FİLTRELE</Button>
-            <Button  onClick={() => cleanFilter()} variant="contained" >FİLTREYİ TEMİZLE</Button>
+            <Button  onClick={() => filterTodo()} variant="contained" >FİLTREYİ TEMİZLE</Button>
         </Box>
     )
 }
